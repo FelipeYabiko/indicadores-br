@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "indicadores-br"
+version = "0.1.0"
+description = "Pipeline e dashboard de indicadores econômicos do Banco Central (Selic, IPCA, IGP-M e dólar)."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Felipe Yabiko Nogueira" }]
+requires-python = ">=3.11"
+dependencies = ["httpx>=0.27", "pandas>=2.2"]
+
+[project.optional-dependencies]
+dashboard = ["streamlit>=1.40", "plotly>=5.24"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+indicadores = "indicadores.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/indicadores"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

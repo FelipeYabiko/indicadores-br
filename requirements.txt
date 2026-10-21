@@ -1,0 +1,5 @@
+# Dependências do dashboard (usadas pelo Streamlit Community Cloud).
+httpx>=0.27
+pandas>=2.2
+plotly>=5.24
+streamlit>=1.40
